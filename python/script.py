@@ -110,8 +110,10 @@ with conectar() as conn:
         for tabela, _ in tabelas_arquivos.items():
             consultar_tabela(cursor, tabela)
 
+# Executa e mostra as querys nao triviais em ../consultas
+# salva o resultado em ../consultas/resultados
 try:
-    with conectar() as conn:  # Assumindo que conectar() está definido
+    with conectar() as conn: 
         with conn.cursor() as cursor:
             # Diretórios
             consultas_dir = '../consultas'
