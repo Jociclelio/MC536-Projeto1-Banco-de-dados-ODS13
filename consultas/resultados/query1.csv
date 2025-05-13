@@ -1,0 +1,148 @@
+ano,fonte_poluente,total_emissao
+2000,Cement,16.047
+2000,Coal,50.46
+2000,Flaring,10.737
+2000,Gas,18.442
+2000,Land Use Change,2193.676
+2000,Oil,239.488
+2000,Other Industry,5.008
+2001,Cement,15.227
+2001,Coal,49.427
+2001,Flaring,11.721
+2001,Gas,23.186
+2001,Land Use Change,2094.904
+2001,Oil,241.795
+2001,Other Industry,4.811
+2002,Cement,14.39
+2002,Coal,48.689
+2002,Flaring,11.218
+2002,Gas,29.293
+2002,Land Use Change,2242.24
+2002,Oil,239.219
+2002,Other Industry,4.956
+2003,Cement,13.096
+2003,Coal,51.933
+2003,Flaring,11.199
+2003,Gas,30.919
+2003,Land Use Change,3149.882
+2003,Oil,232.434
+2003,Other Industry,5.064
+2004,Cement,13.273
+2004,Coal,53.833
+2004,Flaring,10.84
+2004,Gas,38.215
+2004,Land Use Change,2560.971
+2004,Oil,239.768
+2004,Other Industry,5.505
+2005,Cement,14.349
+2005,Coal,50.948
+2005,Flaring,13.877
+2005,Gas,39.619
+2005,Land Use Change,2279.558
+2005,Oil,240.221
+2005,Other Industry,5.356
+2006,Cement,15.44
+2006,Coal,50.838
+2006,Flaring,12.882
+2006,Gas,42.053
+2006,Land Use Change,2091.557
+2006,Oil,242.249
+2006,Other Industry,5.41
+2007,Cement,17.2
+2007,Coal,54.989
+2007,Flaring,13.469
+2007,Gas,43.246
+2007,Land Use Change,1906.509
+2007,Oil,256.003
+2007,Other Industry,5.666
+2008,Cement,18.884
+2008,Coal,55.315
+2008,Flaring,14.207
+2008,Gas,51.303
+2008,Land Use Change,1759.048
+2008,Oil,267.239
+2008,Other Industry,5.69
+2009,Cement,19.031
+2009,Coal,43.586
+2009,Flaring,18.434
+2009,Gas,40.959
+2009,Land Use Change,1519.997
+2009,Oil,262.705
+2009,Other Industry,5.06
+2010,Cement,21.288
+2010,Coal,56.688
+2010,Flaring,15.214
+2010,Gas,55.049
+2010,Land Use Change,1443.259
+2010,Oil,286.08
+2010,Other Industry,5.95
+2011,Cement,22.845
+2011,Coal,62.292
+2011,Flaring,14.12
+2011,Gas,53.101
+2011,Land Use Change,1462.667
+2011,Oil,303.885
+2011,Other Industry,6.337
+2012,Cement,24.998
+2012,Coal,61.016
+2012,Flaring,14.761
+2012,Gas,63.397
+2012,Land Use Change,1647.961
+2012,Oil,327.734
+2012,Other Industry,6.403
+2013,Cement,26.652
+2013,Coal,65.604
+2013,Flaring,16.634
+2013,Gas,74.704
+2013,Land Use Change,1744.983
+2013,Oil,342.338
+2013,Other Industry,6.486
+2014,Cement,26.908
+2014,Coal,69.034
+2014,Flaring,17.642
+2014,Gas,81.286
+2014,Land Use Change,1789.292
+2014,Oil,356.753
+2014,Other Industry,6.278
+2015,Cement,25.082
+2015,Coal,69.452
+2015,Flaring,17.604
+2015,Gas,80.465
+2015,Land Use Change,1778.048
+2015,Oil,330.359
+2015,Other Industry,6.392
+2016,Cement,22.415
+2016,Coal,63.831
+2016,Flaring,17.505
+2016,Gas,69.666
+2016,Land Use Change,1642.293
+2016,Oil,312.939
+2016,Other Industry,6.392
+2017,Cement,20.217
+2017,Coal,67.322
+2017,Flaring,17.505
+2017,Gas,70.688
+2017,Land Use Change,1522.14
+2017,Oil,316.143
+2017,Other Industry,6.392
+2018,Cement,20.494
+2018,Coal,65.841
+2018,Flaring,17.505
+2018,Gas,67.417
+2018,Land Use Change,1537.755
+2018,Oil,300.73
+2018,Other Industry,6.392
+2019,Cement,21.048
+2019,Coal,61.888
+2019,Flaring,17.505
+2019,Gas,67.121
+2019,Land Use Change,1593.3
+2019,Oil,299.436
+2019,Other Industry,6.392
+2020,Cement,23.366
+2020,Coal,56.241
+2020,Flaring,17.505
+2020,Gas,59.026
+2020,Land Use Change,1684.446
+2020,Oil,282.678
+2020,Other Industry,6.392

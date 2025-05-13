@@ -1,0 +1,216 @@
+pais,total_emissao
+China,21559.349000000002
+United States,9487.239
+India,4882.102999999999
+Russia,3572.258
+Brazil,2129.654
+Japan,2082.0909999999994
+Indonesia,1721.6860000000001
+Iran,1521.683
+Germany,1288.7849999999999
+Saudi Arabia,1231.835
+South Korea,1179.79
+Canada,1142.3690000000001
+Australia,883.942
+Mexico,869.164
+South Africa,867.6129999999999
+Vietnam,823.067
+Turkey,795.876
+United Kingdom,661.6239999999999
+Malaysia,589.998
+Thailand,579.292
+Italy,572.4549999999998
+Poland,569.468
+France,538.5169999999999
+Kazakhstan,504.514
+Egypt,473.50699999999995
+Pakistan,467.21799999999996
+Argentina,449.46999999999997
+United Arab Emirates,434.72700000000003
+Ukraine,416.925
+Spain,410.75600000000003
+Democratic Republic of Congo,371.768
+Algeria,338.247
+Iraq,323.359
+Philippines,292.414
+Netherlands,273.97400000000005
+Taiwan,272.203
+Ethiopia,264.179
+Nigeria,261.634
+Uzbekistan,218.075
+Bangladesh,208.77499999999998
+Qatar,205.011
+Kuwait,191.317
+Colombia,189.08599999999998
+Belgium,185.087
+Chile,182.93099999999998
+Czechia,176.55100000000002
+Venezuela,169.38
+Oman,137.59199999999998
+Myanmar,135.36200000000002
+Romania,134.11
+Cote d'Ivoire,131.84
+Morocco,129.826
+Turkmenistan,128.33900000000003
+North Korea,126.569
+Austria,122.32400000000001
+Israel,118.691
+Belarus,117.28
+Peru,100.656
+Finland,97.68499999999999
+Greece,97.46999999999998
+Singapore,93.485
+Bolivia,93.243
+Norway,88.245
+Hungary,88.18100000000001
+New Zealand,87.284
+Portugal,83.35800000000002
+Mongolia,81.19800000000001
+Angola,81.009
+Cambodia,79.625
+Tanzania,79.59899999999999
+Ecuador,79.335
+Sweden,78.93399999999998
+Azerbaijan,75.62700000000001
+Zambia,75.31500000000001
+Bahrain,74.792
+Serbia,74.215
+Ireland,71.114
+Trinidad and Tobago,69.869
+Libya,68.17399999999999
+Switzerland,68.069
+Bulgaria,67.15299999999999
+Slovakia,62.927
+Sudan,61.175
+Guatemala,59.498000000000005
+Denmark,57.687999999999995
+Tunisia,57.375
+Kenya,55.928
+Dominican Republic,54.135999999999996
+Syria,51.949
+Laos,50.07
+Ghana,49.832
+Lebanon,47.739
+Sri Lanka,47.082
+Papua New Guinea,46.598000000000006
+Mali,46.345
+Nepal,45.748000000000005
+Jordan,42.191
+Cameroon,42.099999999999994
+Bosnia and Herzegovina,41.111
+Mozambique,41.019999999999996
+Cuba,39.202999999999996
+Hong Kong,33.497
+Congo,33.324
+Burkina Faso,33.238
+Madagascar,32.037
+Honduras,32.036
+Paraguay,31.211
+Croatia,31.182
+Afghanistan,28.438999999999997
+Slovenia,27.989999999999995
+Zimbabwe,25.923999999999996
+Lithuania,25.361
+Brunei,23.04
+Senegal,22.498
+Costa Rica,22.209000000000003
+South Sudan,21.585
+Yemen,21.535
+Somalia,21.076
+Guinea,20.997
+Liberia,20.664
+Panama,19.641
+Tajikistan,19.397
+Gabon,17.436
+Estonia,17.293
+Kyrgyzstan,16.493
+Luxembourg,16.301000000000002
+Nicaragua,16.099
+Latvia,15.626000000000001
+Benin,15.531
+Uganda,15.206999999999999
+Equatorial Guinea,14.879
+Uruguay,14.55
+North Macedonia,14.144
+Armenia,13.727
+Malawi,13.713000000000001
+Cyprus,13.472999999999999
+Georgia,13.341999999999999
+Jamaica,13.341000000000001
+Niger,12.929
+El Salvador,12.729
+Namibia,12.17
+Chad,12.06
+Guyana,11.392
+Sierra Leone,10.690999999999999
+Botswana,10.41
+Mauritania,9.761
+Albania,9.359
+Bhutan,9.029
+Lesotho,7.751
+Mauritius,7.629
+Eritrea,7.61
+Belize,7.606
+Moldova,7.4319999999999995
+Suriname,7.129
+Iceland,6.994
+Palestine,6.670999999999999
+Burundi,6.282
+Solomon Islands,5.697
+East Timor,5.6339999999999995
+Togo,5.162
+New Caledonia,5.109
+Rwanda,4.845000000000001
+Haiti,4.218
+Bahamas,4.039
+Central African Republic,3.403
+Maldives,3.356
+Malta,3.142
+Eswatini,2.513
+Montenegro,2.4749999999999996
+Barbados,2.412
+Curacao,1.814
+Gambia,1.5379999999999998
+Fiji,1.482
+Antigua and Barbuda,1.201
+Seychelles,1.194
+Macao,1.033
+Cape Verde,1.032
+Djibouti,1.012
+Guinea-Bissau,0.9139999999999999
+Saint Lucia,0.86
+French Polynesia,0.832
+Aruba,0.821
+Comoros,0.764
+Faroe Islands,0.758
+Andorra,0.753
+Sint Maarten (Dutch part),0.652
+Greenland,0.537
+Samoa,0.517
+Grenada,0.476
+Bermuda,0.436
+Palau,0.426
+Saint Vincent and the Grenadines,0.41
+Saint Kitts and Nevis,0.397
+Tonga,0.395
+Turks and Caicos Islands,0.359
+Sao Tome and Principe,0.29700000000000004
+Micronesia (country),0.294
+Marshall Islands,0.294
+Liechtenstein,0.267
+Dominica,0.20800000000000002
+British Virgin Islands,0.18
+Anguilla,0.143
+Kiribati,0.132
+Cook Islands,0.132
+Bonaire Sint Eustatius and Saba,0.114
+Nauru,0.102
+Saint Pierre and Miquelon,0.062
+Wallis and Futuna,0.026
+Tuvalu,0.022
+Montserrat,0.022
+Niue,0.014
+Saint Helena,0.011
+Antarctica,0.0
+Christmas Island,0.0
+Vanuatu,-0.532
