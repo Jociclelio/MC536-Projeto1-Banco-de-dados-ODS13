@@ -1,23 +1,83 @@
 import pandas as pd
-# Faz o parse de Países
-def paises(co2_df,energy_df,tabelas_arquivos):
+
+def regiao(pip_df,tabelas_arquivos):
     try:
-        # Combina iso_code e country dos dois datasets
+        # Lê o dataset
+        df = pip_df
+        
+        # Extrai region_code e region_name, remove duplicatas
+        regioes = df[['region_code', 'region_name']].drop_duplicates()
+        
+        # Renomeia colunas para o schema
+        regioes = regioes.rename(columns={'region_code': 'regiao_code', 'region_name': 'nome'})
+        
+        # Validações
+        regioes['regiao_code'] = regioes['regiao_code'].astype(str).str[:4]  # Trunca para 4 caracteres
+        regioes['nome'] = regioes['nome'].astype(str).str[:50]  # Trunca para 50 caracteres
+        regioes = regioes.dropna()  # Remove linhas com valores nulos
+        
+        # Remove duplicatas de regiao_code (mantém o primeiro)
+        regioes = regioes.drop_duplicates(subset='regiao_code', keep='first')
+        
+        # Adiciona WLD como região padrão, se não estiver presente
+        if 'WLD' not in regioes['regiao_code'].values:
+            wld = pd.DataFrame([{'regiao_code': 'WLD', 'nome': 'World'}])
+            regioes = pd.concat([regioes, wld], ignore_index=True)
+        
+        # Salva CSV
+        regioes.to_csv("../dados-pre-processados/regiao.csv", index=False, encoding='utf-8')
+        print(f"Arquivo regiao.csv gerado com sucesso!")
+        tabelas_arquivos["Região"] = "../dados-pre-processados/regiao.csv"
+        
+    except Exception as e:
+        print(f"Erro ao gerar regioes.csv: {e}")
+
+# Faz o parse de Países
+def paises(co2_df, energy_df, pip_df, tabelas_arquivos):
+    try:
+        # Combina iso_code e country de co2_df e energy_df
         countries_co2 = co2_df[['iso_code', 'country']].dropna()
         countries_energy = energy_df[['iso_code', 'country']].dropna()
         countries = pd.concat([countries_co2, countries_energy]).drop_duplicates()
-
-        # Renomeia a coluna 'country' para 'nome' (sem formatação de array)
         countries = countries[['iso_code', 'country']].rename(columns={'country': 'nome'})
-
-        # Salva como CSV
-        countries.to_csv('../dados-pre-processados/paises.csv', index=False, encoding='utf-8')
+        
+        # Extrai iso_code, nome e regiao_code do pip_df
+        pip_countries = pip_df[['country_code', 'country_name', 'region_code']].drop_duplicates()
+        pip_countries = pip_countries.rename(columns={
+            'country_code': 'iso_code',
+            'country_name': 'nome',
+            'region_code': 'regiao_code'
+        })
+        
+        # Combina com pip_df para adicionar regiao_code
+        countries = countries.merge(
+            pip_countries[['iso_code', 'regiao_code']],
+            on='iso_code',
+            how='left'
+        )
+        
+        # Preenche regiao_code nulos com 'WLD'
+        if countries['regiao_code'].isna().any():
+            missing = countries[countries['regiao_code'].isna()]['iso_code'].tolist()
+            print(f"Aviso: Países sem regiao_code: {missing}. Atribuindo 'WLD'.")
+            countries['regiao_code'] = countries['regiao_code'].fillna('WLD')
+        
+        # Validações
+        countries['iso_code'] = countries['iso_code'].astype(str).str[:4]
+        countries['regiao_code'] = countries['regiao_code'].astype(str).str[:4]
+        countries['nome'] = countries['nome'].astype(str).str[:50]
+        countries = countries.dropna(subset=['iso_code', 'nome'])
+        countries = countries.drop_duplicates(subset='iso_code')
+        
+        # Salva CSV
+        countries[['iso_code', 'regiao_code', 'nome']].to_csv(
+            '../dados-pre-processados/paises.csv', index=False, encoding='utf-8'
+        )
         print("Arquivo paises.csv gerado com sucesso!")
         tabelas_arquivos["Países"] = "../dados-pre-processados/paises.csv"
         
     except Exception as e:
         print(f"Erro ao gerar paises.csv: {e}")
-
 
 # Cria a tabela de tipo Gases
 def tipo_gases(tabelas_arquivos):
@@ -116,9 +176,9 @@ def gases(tabelas_arquivos):
     try:
         # Lista fixa de gases
         gases = [
-            {'gas_id': 1, 'nome': 'CO2', 'tipo_gas_id': 1},  # CO₂ como Greenhouse Gas
-            {'gas_id': 2, 'nome': 'Methane', 'tipo_gas_id': 1},  # Metano como Greenhouse Gas
-            {'gas_id': 3, 'nome': 'Nitrous Oxide', 'tipo_gas_id': 1}  # Óxido nitroso como Greenhouse Gas
+            {'gas_id': 1, 'tipo_gas_id': 1, 'nome': 'CO2', },  # CO₂ como Greenhouse Gas
+            {'gas_id': 2, 'tipo_gas_id': 1, 'nome': 'Methane', },  # Metano como Greenhouse Gas
+            {'gas_id': 3, 'tipo_gas_id': 1, 'nome': 'Nitrous Oxide', }  # Óxido nitroso como Greenhouse Gas
         ]
         
         # Cria um DataFrame com os dados
@@ -197,7 +257,7 @@ def emissao_comercio(co2_df,tabelas_arquivos):
         emissao_comercio = emissao_comercio.rename(columns={'year': 'ano'})
         
         # Reordena as colunas para corresponder à tabela
-        emissao_comercio = emissao_comercio[['iso_code', 'ano', 'gas_id', 'trade_co2', 'consumption_co2']]
+        emissao_comercio = emissao_comercio[['iso_code', 'gas_id','ano',  'trade_co2', 'consumption_co2']]
         
         # Salva como CSV
         emissao_comercio.to_csv('../dados-pre-processados/emissao_comercio.csv', index=False, encoding='utf-8')
@@ -279,7 +339,7 @@ def emissao_poluentes(co2_df,fontes_poluente_path,tabelas_arquivos):
         emissao_poluentes = emissao_poluentes.rename(columns={'year': 'ano'})
         
         # Seleciona as colunas na ordem correta
-        emissao_poluentes = emissao_poluentes[['iso_code', 'ano', 'gas_id', 'fonte_poluente_id', 'emissao', 'emissao_cumulativa']]
+        emissao_poluentes = emissao_poluentes[['iso_code', 'gas_id', 'fonte_poluente_id', 'ano','emissao', 'emissao_cumulativa']]
         
         # Salva como CSV
         emissao_poluentes.to_csv('../dados-pre-processados/emissao_poluentes.csv', index=False, encoding='utf-8')
@@ -389,7 +449,7 @@ def atividades_energia(co2_df,energy_df,fontes_energia_path,tabelas_arquivos):
         atividades_energia = atividades_energia.rename(columns={'year': 'ano'})
         
         # Seleciona as colunas na ordem correta
-        atividades_energia = atividades_energia[['iso_code', 'ano', 'fonte_energia_id', 'producao', 'geracao', 'consumo']]
+        atividades_energia = atividades_energia[['iso_code', 'fonte_energia_id', 'ano', 'producao', 'geracao', 'consumo']]
         
         # Salva como CSV
         atividades_energia.to_csv('../dados-pre-processados/atividades_energia.csv', index=False, encoding='utf-8')
