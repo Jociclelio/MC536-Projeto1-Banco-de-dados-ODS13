@@ -2,6 +2,7 @@ import pandas as pd
 import psycopg2
 from psycopg2 import sql
 from tabulate import tabulate
+import os
 
 import parses
 
@@ -103,9 +104,76 @@ def consultar_tabela(cursor, tabela):
     if rows:
         print(tabulate(rows, headers=columns, tablefmt='psql', floatfmt=".2f"))
 
-# Verifica os dados inseridos no banco
+# Mostra as tabelas inseridas no banco
 with conectar() as conn:
     with conn.cursor() as cursor:
         for tabela, _ in tabelas_arquivos.items():
             consultar_tabela(cursor, tabela)
 
+try:
+    with conectar() as conn:  # Assumindo que conectar() está definido
+        with conn.cursor() as cursor:
+            # Diretórios
+            consultas_dir = '../consultas'
+            resultados_dir = '../consultas/resultados'
+            os.makedirs(resultados_dir, exist_ok=True)
+            
+            # Executar consultas dinamicamente
+            i = 1
+            while True:
+                query_file = f'{consultas_dir}/query{i}.sql'
+                txt_file = f'{consultas_dir}/query{i}.txt'
+                result_file = f'{resultados_dir}/query{i}.csv'
+                
+                # Verificar se o arquivo de consulta existe
+                if not os.path.exists(query_file):
+                    print(f"\nNenhuma query{i}.sql encontrada. Finalizando.")
+                    break
+                
+                # Ler consulta
+                try:
+                    with open(query_file, 'r', encoding='utf-8') as f:
+                        query = f.read()
+                except Exception as e:
+                    print(f"Erro ao ler {query_file}: {e}")
+                    i += 1
+                    continue
+                
+                # Executar consulta
+                try:
+                    cursor.execute(query)
+                    rows = cursor.fetchall()
+                    columns = [desc[0] for desc in cursor.description]
+                    
+                    # Exibir resultado
+                    print(f"\nConsulta {i}: ", end="")
+                    # Ler e exibir query{i}.txt, se existir
+                    if os.path.exists(txt_file):
+                        try:
+                            with open(txt_file, 'r', encoding='utf-8') as f:
+                                conteudo = f.read()
+                            print(conteudo)
+                        except Exception as e:
+                            print(f"Erro ao ler {txt_file}: {e}")
+                    else:
+                        print(f"\nNenhum {txt_file} encontrado.")
+                    
+                    print(tabulate(rows, headers=columns, tablefmt='psql', floatfmt=".2f"))
+                    
+                    # Salvar como CSV
+                    df = pd.DataFrame(rows, columns=columns)
+                    df.to_csv(result_file, index=False, encoding='utf-8')
+                    print(f"Resultado salvo em {result_file}")
+                    
+                    # Commit para evitar transação abortada
+                    conn.commit()
+                    
+                except Exception as e:
+                    print(f"Erro ao executar consulta {i}: {e}")
+                    # Rollback para limpar o erro
+                    conn.rollback()
+                
+                i += 1
+                
+except Exception as e:
+    print(f"Erro geral: {e}")
