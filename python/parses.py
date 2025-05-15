@@ -1,4 +1,7 @@
 import pandas as pd
+import os
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 def regiao(pip_df,tabelas_arquivos):
     try:
@@ -25,9 +28,12 @@ def regiao(pip_df,tabelas_arquivos):
             regioes = pd.concat([regioes, wld], ignore_index=True)
         
         # Salva CSV
-        regioes.to_csv("../dados-pre-processados/regiao.csv", index=False, encoding='utf-8')
+        regioes_path = os.path.join(BASE_DIR, "../dados-pre-processados/regiao.csv")
+        regioes.to_csv(regioes_path, index=False, encoding='utf-8')
         print(f"Arquivo regiao.csv gerado com sucesso!")
-        tabelas_arquivos["Região"] = "../dados-pre-processados/regiao.csv"
+        
+        # Adiciona à lista de tabelas para importação
+        tabelas_arquivos["Região"] = regioes_path
         
     except Exception as e:
         print(f"Erro ao gerar regioes.csv: {e}")
@@ -70,11 +76,14 @@ def paises(co2_df, energy_df, pip_df, tabelas_arquivos):
         countries = countries.drop_duplicates(subset='iso_code')
         
         # Salva CSV
+        countries_path = os.path.join(BASE_DIR, '../dados-pre-processados/paises.csv')
         countries[['iso_code', 'regiao_code', 'nome']].to_csv(
-            '../dados-pre-processados/paises.csv', index=False, encoding='utf-8'
+            countries_path, index=False, encoding='utf-8'
         )
         print("Arquivo paises.csv gerado com sucesso!")
-        tabelas_arquivos["Países"] = "../dados-pre-processados/paises.csv"
+        
+        # Adiciona à lista de tabelas para importação
+        tabelas_arquivos["Países"] = countries_path
         
     except Exception as e:
         print(f"Erro ao gerar paises.csv: {e}")
@@ -92,17 +101,18 @@ def tipo_gases(tabelas_arquivos):
         df = pd.DataFrame(tipo_gases)
     
         # Salva como CSV
-        df.to_csv('../dados-pre-processados/tipo_gases.csv', index=False, encoding='utf-8')
+        tipo_gases_path = os.path.join(BASE_DIR, '../dados-pre-processados/tipo_gases.csv')
+        df.to_csv(tipo_gases_path, index=False, encoding='utf-8')
         print("Arquivo tipo_gases.csv gerado com sucesso!")
     
         # Adiciona à lista de tabelas para importação
-        tabelas_arquivos["TipoGases"] =  "../dados-pre-processados/tipo_gases.csv"
+        tabelas_arquivos["TipoGases"] = tipo_gases_path
     
     except Exception as e:
         print(f"Erro ao gerar tipo_gases.csv: {e}")
 
 # Cria a tabela fonte_poluentes
-def fonte_poluentes(tabelas_arquivos):
+def fontes_poluente(tabelas_arquivos):
     try:
         # Lista fixa de fontes de poluição
         fontes_poluente = [
@@ -119,14 +129,18 @@ def fonte_poluentes(tabelas_arquivos):
         df = pd.DataFrame(fontes_poluente)
         
         # Salva como CSV
-        df.to_csv('../dados-pre-processados/fontes_poluente.csv', index=False, encoding='utf-8')
+        fontes_poluente_path = os.path.join(BASE_DIR, '../dados-pre-processados/fontes_poluente.csv')
+        df.to_csv(fontes_poluente_path, index=False, encoding='utf-8')
         print("Arquivo fontes_poluente.csv gerado com sucesso!")
-        tabelas_arquivos["FontesPoluente"] = "../dados-pre-processados/fontes_poluente.csv"
+        
+        # Adiciona à lista de tabelas para importação
+        tabelas_arquivos["FontesPoluente"] = fontes_poluente_path
+        
     except Exception as e:
         print(f"Erro ao gerar fontes_poluente.csv: {e}")
 
 # Cria a tabela Fontes Energia
-def fonte_energia(tabelas_arquivos):
+def fontes_energia(tabelas_arquivos):
     try:
         # Lista fixa de fontes de energia
         fontes_energia = [
@@ -145,9 +159,12 @@ def fonte_energia(tabelas_arquivos):
         df = pd.DataFrame(fontes_energia)
         
         # Salva como CSV
-        df.to_csv('../dados-pre-processados/fontes_energia.csv', index=False, encoding='utf-8')
+        fontes_energia_path = os.path.join(BASE_DIR, '../dados-pre-processados/fontes_energia.csv')
+        df.to_csv(fontes_energia_path, index=False, encoding='utf-8')
         print("Arquivo fontes_energia.csv gerado com sucesso!")
-        tabelas_arquivos["FontesEnergia"] = "../dados-pre-processados/fontes_energia.csv"
+        
+        # Adiciona à lista de tabelas para importação
+        tabelas_arquivos["FontesEnergia"] = fontes_energia_path
         
     except Exception as e:
         print(f"Erro ao gerar fontes_energia.csv: {e}")
@@ -164,9 +181,12 @@ def indicadores_economicos(co2_df,energy_df,tabelas_arquivos):
         indicadores = indicadores.rename(columns={'year': 'ano'})
         
         # Salva como CSV
-        indicadores.to_csv('../dados-pre-processados/indicadores_economicos.csv', index=False, encoding='utf-8')
+        indicadores_path = os.path.join(BASE_DIR, '../dados-pre-processados/indicadores_economicos.csv')
+        indicadores.to_csv(indicadores_path, index=False, encoding='utf-8')
         print("Arquivo indicadores_economicos.csv gerado com sucesso!")
-        tabelas_arquivos["IndicadoresEconômicos"] = "../dados-pre-processados/indicadores_economicos.csv"
+        
+        # Adiciona à lista de tabelas para importação
+        tabelas_arquivos["IndicadoresEconômicos"] = indicadores_path
         
     except Exception as e:
         print(f"Erro ao gerar indicadores_economicos.csv: {e}")
@@ -185,9 +205,12 @@ def gases(tabelas_arquivos):
         df = pd.DataFrame(gases)
         
         # Salva como CSV
-        df.to_csv('../dados-pre-processados/gases.csv', index=False, encoding='utf-8')
+        gases_path = os.path.join(BASE_DIR, '../dados-pre-processados/gases.csv')
+        df.to_csv(gases_path, index=False, encoding='utf-8')
         print("Arquivo gases.csv gerado com sucesso!")
-        tabelas_arquivos["Gases"] = "../dados-pre-processados/gases.csv"
+        
+        # Adiciona à lista de tabelas para importação
+        tabelas_arquivos["Gases"] = gases_path
         
     except Exception as e:
         print(f"Erro ao gerar gases.csv: {e}")    
@@ -210,11 +233,12 @@ def demografia(co2_df,energy_df,tabelas_arquivos):
         demografia['population'] = demografia['population'].round().astype(int)
         
         # Salva como CSV
-        demografia.to_csv('../dados-pre-processados/demografia.csv', index=False, encoding='utf-8')
+        demografia_path = os.path.join(BASE_DIR, '../dados-pre-processados/demografia.csv')
+        demografia.to_csv(demografia_path, index=False, encoding='utf-8')
         print("Arquivo demografia.csv gerado com sucesso!")
         
         # Adiciona à lista de tabelas para importação
-        tabelas_arquivos["Demografia"] = "../dados-pre-processados/demografia.csv"
+        tabelas_arquivos["Demografia"] = demografia_path
         
     except Exception as e:
         print(f"Erro ao gerar demografia.csv: {e}")
@@ -232,11 +256,12 @@ def emissao_total_ghg(co2_df,tabelas_arquivos):
         emissao_ghg = emissao_ghg.rename(columns={'year': 'ano'})
         
         # Salva como CSV
-        emissao_ghg.to_csv('../dados-pre-processados/emissao_total_ghg.csv', index=False, encoding='utf-8')
+        emissao_ghg_path = os.path.join(BASE_DIR, '../dados-pre-processados/emissao_total_ghg.csv')
+        emissao_ghg.to_csv(emissao_ghg_path, index=False, encoding='utf-8')
         print("Arquivo emissao_total_ghg.csv gerado com sucesso!")
         
         # Adiciona à lista de tabelas para importação
-        tabelas_arquivos["EmissãoTotalGHG"] = "../dados-pre-processados/emissao_total_ghg.csv"
+        tabelas_arquivos["EmissãoTotalGHG"] = emissao_ghg_path
         
     except Exception as e:
         print(f"Erro ao gerar emissao_total_ghg.csv: {e}")
@@ -260,11 +285,12 @@ def emissao_comercio(co2_df,tabelas_arquivos):
         emissao_comercio = emissao_comercio[['iso_code', 'gas_id','ano',  'trade_co2', 'consumption_co2']]
         
         # Salva como CSV
-        emissao_comercio.to_csv('../dados-pre-processados/emissao_comercio.csv', index=False, encoding='utf-8')
+        emissao_comercio_path = os.path.join(BASE_DIR, '../dados-pre-processados/emissao_comercio.csv')
+        emissao_comercio.to_csv(emissao_comercio_path, index=False, encoding='utf-8')
         print("Arquivo emissao_comercio.csv gerado com sucesso!")
         
         # Adiciona à lista de tabelas para importação
-        tabelas_arquivos["EmissãoComércio"] = "../dados-pre-processados/emissao_comercio.csv"
+        tabelas_arquivos["EmissãoComércio"] = emissao_comercio_path
         
     except Exception as e:
         print(f"Erro ao gerar emissao_comercio.csv: {e}")
@@ -342,11 +368,12 @@ def emissao_poluentes(co2_df,fontes_poluente_path,tabelas_arquivos):
         emissao_poluentes = emissao_poluentes[['iso_code', 'gas_id', 'fonte_poluente_id', 'ano','emissao', 'emissao_cumulativa']]
         
         # Salva como CSV
-        emissao_poluentes.to_csv('../dados-pre-processados/emissao_poluentes.csv', index=False, encoding='utf-8')
+        emissao_poluentes_path = os.path.join(BASE_DIR, '../dados-pre-processados/emissao_poluentes.csv')
+        emissao_poluentes.to_csv(emissao_poluentes_path, index=False, encoding='utf-8')
         print("Arquivo emissao_poluentes.csv gerado com sucesso!")
         
         # Adiciona à lista de tabelas para importação
-        tabelas_arquivos["EmissãoPoluentes"] = "../dados-pre-processados/emissao_poluentes.csv"
+        tabelas_arquivos["EmissãoPoluentes"] = emissao_poluentes_path
         
     except Exception as e:
         print(f"Erro ao gerar emissao_poluentes.csv: {e}")
@@ -452,15 +479,12 @@ def atividades_energia(co2_df,energy_df,fontes_energia_path,tabelas_arquivos):
         atividades_energia = atividades_energia[['iso_code', 'fonte_energia_id', 'ano', 'producao', 'geracao', 'consumo']]
         
         # Salva como CSV
-        atividades_energia.to_csv('../dados-pre-processados/atividades_energia.csv', index=False, encoding='utf-8')
+        atividades_energia_path = os.path.join(BASE_DIR, '../dados-pre-processados/atividades_energia.csv')
+        atividades_energia.to_csv(atividades_energia_path, index=False, encoding='utf-8')
         print("Arquivo atividades_energia.csv gerado com sucesso!")
         
         # Adiciona à lista de tabelas para importação
-        tabelas_arquivos["AtividadesEnergia"] = "../dados-pre-processados/atividades_energia.csv"
+        tabelas_arquivos["AtividadesEnergia"] = atividades_energia_path
         
     except Exception as e:
         print(f"Erro ao gerar atividades_energia.csv: {e}")
-
-
-
-

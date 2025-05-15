@@ -6,6 +6,8 @@ import os
 
 import parses
 
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+          
 # Conexão com o banco
 def conectar():
     print("Conectando...")
@@ -39,7 +41,7 @@ with conectar() as conn:
                 DROP TABLE IF EXISTS "EmissãoTotalGHG" CASCADE;
                 DROP TABLE IF EXISTS "TipoGases" CASCADE;
                            """)
-            with open('../modelos/ModeloFisico.sql', 'r', encoding='utf-8') as f:
+            with open(os.path.join(BASE_DIR, '../modelos/ModeloFisico.sql'), 'r', encoding='utf-8') as f:
                 sql_script = f.read()
                 # Executa o script SQL
                 cursor.execute(sql_script)
@@ -51,9 +53,9 @@ with conectar() as conn:
 
 
 # Carregar datasets
-co2_df = pd.read_csv("../datasets/owid-co2-data.csv")
-energy_df = pd.read_csv("../datasets/owid-energy-data.csv")
-pip_df = pd.read_csv("../datasets/pip.csv")
+co2_df = pd.read_csv(os.path.join(BASE_DIR, "../datasets/owid-co2-data.csv"))
+energy_df = pd.read_csv(os.path.join(BASE_DIR, "../datasets/owid-energy-data.csv"))
+pip_df = pd.read_csv(os.path.join(BASE_DIR, "../datasets/pip.csv"))
 
 # Guardar o nome e referencia dos csv gerados
 tabelas_arquivos = {}
@@ -62,8 +64,8 @@ tabelas_arquivos = {}
 parses.regiao(pip_df,tabelas_arquivos)
 parses.paises(co2_df,energy_df, pip_df,tabelas_arquivos)
 parses.tipo_gases(tabelas_arquivos)
-parses.fonte_poluentes(tabelas_arquivos)
-parses.fonte_energia(tabelas_arquivos)
+parses.fontes_poluente(tabelas_arquivos)
+parses.fontes_energia(tabelas_arquivos)
 parses.indicadores_economicos(co2_df,energy_df,tabelas_arquivos)
 parses.gases(tabelas_arquivos)
 parses.demografia(co2_df,energy_df,tabelas_arquivos)
@@ -116,8 +118,8 @@ try:
     with conectar() as conn: 
         with conn.cursor() as cursor:
             # Diretórios
-            consultas_dir = '../consultas'
-            resultados_dir = '../consultas/resultados'
+            consultas_dir = os.path.join(BASE_DIR, '../consultas')
+            resultados_dir = os.path.join(BASE_DIR, '../consultas/resultados')
             os.makedirs(resultados_dir, exist_ok=True)
             
             # Executar consultas dinamicamente
