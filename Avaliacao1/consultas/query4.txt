@@ -1,1 +1,1 @@
-ODS 13.b (Planejamento Regional): Analisa emissões por região, incluindo 'World', apoiando estratégias climáticas regionais e globais.
+ODS 13.b (Planejamento Regional): Mostra a quantidade de emissões por região, incluindo 'World', apoiando estratégias climáticas regionais e globais.

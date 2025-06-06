@@ -1,1 +1,1 @@
-ODS 13.3 (Conscientização): Mostra os 5 países com maiores emissões em 2020, promovendo conscientização sobre os principais emissores globais.
+ODS 13.3 (Conscientização): Mostra os países em ordem descendente de emissões em 2020, promovendo conscientização sobre os principais emissores globais.
