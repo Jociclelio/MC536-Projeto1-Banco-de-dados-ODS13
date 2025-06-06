@@ -5,14 +5,14 @@ import os
 # Conectar ao MongoDB
 client = pymongo.MongoClient("mongodb://localhost:27017/")
 db = client["ods13_db"]
-db.drop_database()  # Limpar banco existente
+client.drop_database("ods13_db")  # Limpar banco existente
 
 # Diretório dos dados
-data_dir = "../dados-pre-processados"
+data_dir = "../../Avaliacao1/dados-pre-processados"
 
 # Carregar datasets
-pip_df = pd.read_csv(f"{data_dir}/dataset.csv")
-co2_df = pd.read_csv(f"{data_dir}/co2_data.csv")
+pip_df = pd.read_csv(f"{data_dir}/../datasets/pip.csv")
+co2_df = pd.read_csv(f"{data_dir}/../datasets/owid-co2-data.csv")
 energy_df = pd.read_csv(f"{data_dir}/atividades_energia.csv")
 poluentes_df = pd.read_csv(f"{data_dir}/emissao_poluentes.csv")
 econ_df = pd.read_csv(f"{data_dir}/indicadores_economicos.csv")
