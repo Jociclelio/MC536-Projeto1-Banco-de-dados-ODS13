@@ -1,0 +1,9 @@
+total_emissao,regiao
+25893.071,East Asia & Pacific
+20542.058,Other High Income Countries
+7256.4310000000005,Europe & Central Asia
+5663.311,South Asia
+4639.919,Latin America & Caribbean
+3015.094,Middle East & North Africa
+2812.856,Sub-Saharan Africa
+2281.585,World

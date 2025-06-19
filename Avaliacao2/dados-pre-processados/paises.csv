@@ -1,0 +1,233 @@
+iso_code,nome,regiao_code
+AFG,Afghanistan,WLD
+ALB,Albania,ECA
+DZA,Algeria,MNA
+AND,Andorra,WLD
+AGO,Angola,SSA
+AIA,Anguilla,WLD
+ATA,Antarctica,WLD
+ATG,Antigua and Barbuda,WLD
+ARG,Argentina,LAC
+ARM,Armenia,ECA
+ABW,Aruba,WLD
+AUS,Australia,OHI
+AUT,Austria,OHI
+AZE,Azerbaijan,ECA
+BHS,Bahamas,WLD
+BHR,Bahrain,WLD
+BGD,Bangladesh,SAS
+BRB,Barbados,WLD
+BLR,Belarus,ECA
+BEL,Belgium,OHI
+BLZ,Belize,LAC
+BEN,Benin,SSA
+BMU,Bermuda,WLD
+BTN,Bhutan,SAS
+BOL,Bolivia,LAC
+BES,Bonaire Sint Eustatius and Saba,WLD
+BIH,Bosnia and Herzegovina,ECA
+BWA,Botswana,SSA
+BRA,Brazil,LAC
+VGB,British Virgin Islands,WLD
+BRN,Brunei,WLD
+BGR,Bulgaria,ECA
+BFA,Burkina Faso,SSA
+BDI,Burundi,SSA
+KHM,Cambodia,WLD
+CMR,Cameroon,SSA
+CAN,Canada,OHI
+CPV,Cape Verde,SSA
+CAF,Central African Republic,SSA
+TCD,Chad,SSA
+CHL,Chile,LAC
+CHN,China,EAP
+CXR,Christmas Island,WLD
+COL,Colombia,LAC
+COM,Comoros,SSA
+COG,Congo,SSA
+COK,Cook Islands,WLD
+CRI,Costa Rica,LAC
+CIV,Cote d'Ivoire,SSA
+HRV,Croatia,ECA
+CUB,Cuba,WLD
+CUW,Curacao,WLD
+CYP,Cyprus,OHI
+CZE,Czechia,ECA
+COD,Democratic Republic of Congo,SSA
+DNK,Denmark,OHI
+DJI,Djibouti,MNA
+DMA,Dominica,WLD
+DOM,Dominican Republic,LAC
+TLS,East Timor,EAP
+ECU,Ecuador,LAC
+EGY,Egypt,MNA
+SLV,El Salvador,LAC
+GNQ,Equatorial Guinea,WLD
+ERI,Eritrea,WLD
+EST,Estonia,ECA
+SWZ,Eswatini,SSA
+ETH,Ethiopia,SSA
+FRO,Faroe Islands,WLD
+FJI,Fiji,EAP
+FIN,Finland,OHI
+FRA,France,OHI
+PYF,French Polynesia,WLD
+GAB,Gabon,SSA
+GMB,Gambia,SSA
+GEO,Georgia,ECA
+DEU,Germany,OHI
+GHA,Ghana,SSA
+GRC,Greece,OHI
+GRL,Greenland,WLD
+GRD,Grenada,LAC
+GTM,Guatemala,LAC
+GIN,Guinea,SSA
+GNB,Guinea-Bissau,SSA
+GUY,Guyana,LAC
+HTI,Haiti,LAC
+HND,Honduras,LAC
+HKG,Hong Kong,WLD
+HUN,Hungary,ECA
+ISL,Iceland,OHI
+IND,India,SAS
+IDN,Indonesia,EAP
+IRN,Iran,MNA
+IRQ,Iraq,MNA
+IRL,Ireland,OHI
+ISR,Israel,OHI
+ITA,Italy,OHI
+JAM,Jamaica,LAC
+JPN,Japan,OHI
+JOR,Jordan,MNA
+KAZ,Kazakhstan,ECA
+KEN,Kenya,SSA
+KIR,Kiribati,EAP
+KWT,Kuwait,WLD
+KGZ,Kyrgyzstan,ECA
+LAO,Laos,EAP
+LVA,Latvia,ECA
+LBN,Lebanon,MNA
+LSO,Lesotho,SSA
+LBR,Liberia,SSA
+LBY,Libya,WLD
+LIE,Liechtenstein,WLD
+LTU,Lithuania,ECA
+LUX,Luxembourg,OHI
+MAC,Macao,WLD
+MDG,Madagascar,SSA
+MWI,Malawi,SSA
+MYS,Malaysia,EAP
+MDV,Maldives,SAS
+MLI,Mali,SSA
+MLT,Malta,OHI
+MHL,Marshall Islands,EAP
+MRT,Mauritania,SSA
+MUS,Mauritius,SSA
+MEX,Mexico,LAC
+FSM,Micronesia (country),EAP
+MDA,Moldova,ECA
+MCO,Monaco,WLD
+MNG,Mongolia,EAP
+MNE,Montenegro,ECA
+MSR,Montserrat,WLD
+MAR,Morocco,MNA
+MOZ,Mozambique,SSA
+MMR,Myanmar,EAP
+NAM,Namibia,SSA
+NRU,Nauru,EAP
+NPL,Nepal,SAS
+NLD,Netherlands,OHI
+NCL,New Caledonia,WLD
+NZL,New Zealand,WLD
+NIC,Nicaragua,LAC
+NER,Niger,SSA
+NGA,Nigeria,SSA
+NIU,Niue,WLD
+PRK,North Korea,WLD
+MKD,North Macedonia,ECA
+NOR,Norway,OHI
+OMN,Oman,WLD
+PAK,Pakistan,SAS
+PLW,Palau,WLD
+PSE,Palestine,MNA
+PAN,Panama,LAC
+PNG,Papua New Guinea,EAP
+PRY,Paraguay,LAC
+PER,Peru,LAC
+PHL,Philippines,EAP
+POL,Poland,ECA
+PRT,Portugal,OHI
+QAT,Qatar,OHI
+ROU,Romania,ECA
+RUS,Russia,ECA
+RWA,Rwanda,SSA
+SHN,Saint Helena,WLD
+KNA,Saint Kitts and Nevis,WLD
+LCA,Saint Lucia,LAC
+SPM,Saint Pierre and Miquelon,WLD
+VCT,Saint Vincent and the Grenadines,WLD
+WSM,Samoa,EAP
+SMR,San Marino,WLD
+STP,Sao Tome and Principe,SSA
+SAU,Saudi Arabia,WLD
+SEN,Senegal,SSA
+SRB,Serbia,ECA
+SYC,Seychelles,SSA
+SLE,Sierra Leone,SSA
+SGP,Singapore,WLD
+SXM,Sint Maarten (Dutch part),WLD
+SVK,Slovakia,ECA
+SVN,Slovenia,ECA
+SLB,Solomon Islands,EAP
+SOM,Somalia,WLD
+ZAF,South Africa,SSA
+KOR,South Korea,OHI
+SSD,South Sudan,SSA
+ESP,Spain,OHI
+LKA,Sri Lanka,SAS
+SDN,Sudan,SSA
+SUR,Suriname,LAC
+SWE,Sweden,OHI
+CHE,Switzerland,OHI
+SYR,Syria,MNA
+TWN,Taiwan,OHI
+TJK,Tajikistan,ECA
+TZA,Tanzania,SSA
+THA,Thailand,EAP
+TGO,Togo,SSA
+TON,Tonga,EAP
+TTO,Trinidad and Tobago,LAC
+TUN,Tunisia,MNA
+TUR,Turkey,ECA
+TKM,Turkmenistan,ECA
+TCA,Turks and Caicos Islands,WLD
+TUV,Tuvalu,EAP
+UGA,Uganda,SSA
+UKR,Ukraine,ECA
+ARE,United Arab Emirates,OHI
+GBR,United Kingdom,OHI
+USA,United States,OHI
+URY,Uruguay,LAC
+UZB,Uzbekistan,ECA
+VUT,Vanuatu,EAP
+VAT,Vatican,WLD
+VEN,Venezuela,LAC
+VNM,Vietnam,EAP
+WLF,Wallis and Futuna,WLD
+YEM,Yemen,MNA
+ZMB,Zambia,SSA
+ZWE,Zimbabwe,SSA
+ASM,American Samoa,WLD
+CYM,Cayman Islands,WLD
+FLK,Falkland Islands,WLD
+GUF,French Guiana,WLD
+GIB,Gibraltar,WLD
+GLP,Guadeloupe,WLD
+GUM,Guam,WLD
+MTQ,Martinique,WLD
+ANT,Netherlands Antilles,WLD
+MNP,Northern Mariana Islands,WLD
+PRI,Puerto Rico,WLD
+REU,Reunion,WLD
+VIR,United States Virgin Islands,WLD
+ESH,Western Sahara,WLD

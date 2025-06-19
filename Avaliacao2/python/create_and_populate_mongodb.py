@@ -168,6 +168,18 @@ if sample_pais:
     print(f"  Indicadores Econômicos: {len(sample_pais['indicadores_economicos'])} registros")
 else:
     print("Documento para Brasil (BRA) não encontrado.")
+sample_pais = db.paises.find_one({"_id": "USA"})
+if sample_pais:
+    print(f"\nExemplo de documento para Estados Unidos (USA):")
+    print(f"  Nome: {sample_pais['nome']}")
+    print(f"  Região: {sample_pais['regiao']['nome']}")
+    print(f"  Emissões: {len(sample_pais['emissoes'])} registros")
+    print(f"  Energia: {len(sample_pais['energia'])} registros")
+    print(f"  Indicadores Econômicos: {len(sample_pais['indicadores_economicos'])} registros")
+else:
+    print("Documento para Estados Unidos (USA) não encontrado.")
+
+
 
 # Fechar conexão com MongoDB
 client.close()

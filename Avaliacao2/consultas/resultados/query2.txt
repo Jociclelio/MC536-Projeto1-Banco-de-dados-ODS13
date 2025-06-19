@@ -1,0 +1,6 @@
+total_emissao,pais
+21559.349000000002,China
+9487.239000000001,United States
+4882.103,India
+3572.258,Russia
+2129.654,Brazil
