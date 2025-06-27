@@ -58,12 +58,6 @@ regiao_df = query_to_csv(query_regiao, "regiao.csv")
 query_paises = 'SELECT iso_code, nome, regiao_code FROM public."Países"'
 paises_df = query_to_csv(query_paises, "paises.csv")
 
-query_fontes_poluente = 'SELECT fonte_poluente_id, nome FROM public."FontesPoluente"'
-fontes_poluente_df = query_to_csv(query_fontes_poluente, "fontes_poluente.csv")
-
-query_fontes_energia = 'SELECT fonte_energia_id, nome FROM public."FontesEnergia"'
-fontes_energia_df = query_to_csv(query_fontes_energia, "fontes_energia.csv")
-
 query_emissao_poluentes = """
 SELECT e.iso_code, e.ano, e.emissao, f.fonte_poluente_id, f.nome AS fonte_poluente
 FROM public."EmissãoPoluentes" e
@@ -79,26 +73,13 @@ JOIN public."FontesEnergia" f ON a.fonte_energia_id = f.fonte_energia_id
 atividades_energia_df = query_to_csv(query_atividades_energia, "atividades_energia.csv")
 
 query_indicadores_economicos = 'SELECT * FROM public."IndicadoresEconômicos"'
-indicadores_economicos_df = query_to_csv(query_indicadores_economicos, "indicadores_economicos.csv")
+pib_df = query_to_csv(query_indicadores_economicos, "indicadores_economicos.csv")
 
 # Fechar conexão com PostgreSQL
 cursor.close()
 conn.close()
 
 # Passo 3: Popular MongoDB a partir dos CSVs gerados
-fontes_poluente_dict = [
-    {"_id": row["fonte_poluente_id"], "nome": row["nome"]}
-    for _, row in fontes_poluente_df.iterrows()
-]
-db.fontes_poluente.insert_many(fontes_poluente_dict)
-print(f"Coleção fontes_poluente populada com {len(fontes_poluente_dict)} documentos.")
-
-fontes_energia_dict = [
-    {"_id": row["fonte_energia_id"], "nome": row["nome"]}
-    for _, row in fontes_energia_df.iterrows()
-]
-db.fontes_energia.insert_many(fontes_energia_dict)
-print(f"Coleção fontes_energia populada com {len(fontes_energia_dict)} documentos.")
 
 # Inicializar Paises com base em paises.csv
 paises_dict = {}
@@ -115,7 +96,7 @@ for _, row in paises_df.iterrows():
         },
         "emissoes": [],
         "energia": [],
-        "indicadores_economicos": []
+        "pib": [],
     }
 
 # Popular array emissoes
@@ -139,15 +120,15 @@ for _, row in atividades_energia_df.iterrows():
         })
 
 # Popular array indicadores_economicos
-indicadores_cols = [col for col in indicadores_economicos_df.columns if col not in ["iso_code", "ano"]]
-for _, row in indicadores_economicos_df.iterrows():
+indicadores_cols = [col for col in pib_df.columns if col not in ["iso_code", "ano"]]
+for _, row in pib_df.iterrows():
     iso_code = row["iso_code"]
     if iso_code in paises_dict:
         indicadores = {"ano": int(row["ano"])}
         for col in indicadores_cols:
             if pd.notna(row[col]):
                 indicadores[col] = row[col]
-        paises_dict[iso_code]["indicadores_economicos"].append(indicadores)
+        paises_dict[iso_code]["pib"].append(indicadores)
 
 # Inserir documentos na coleção Paises
 db.paises.insert_many(list(paises_dict.values()))
@@ -155,8 +136,6 @@ print(f"Coleção paises populada com {len(paises_dict)} documentos.")
 
 # Testar e Validar o Banco
 print("\nValidação:")
-print(f"Total de documentos em fontes_poluente: {db.fontes_poluente.count_documents({})}")
-print(f"Total de documentos em fontes_energia: {db.fontes_energia.count_documents({})}")
 print(f"Total de documentos em paises: {db.paises.count_documents({})}")
 sample_pais = db.paises.find_one({"_id": "BRA"})
 if sample_pais:
@@ -165,7 +144,7 @@ if sample_pais:
     print(f"  Região: {sample_pais['regiao']['nome']}")
     print(f"  Emissões: {len(sample_pais['emissoes'])} registros")
     print(f"  Energia: {len(sample_pais['energia'])} registros")
-    print(f"  Indicadores Econômicos: {len(sample_pais['indicadores_economicos'])} registros")
+    print(f"  Pib: {len(sample_pais['pib'])} registros")
 else:
     print("Documento para Brasil (BRA) não encontrado.")
 sample_pais = db.paises.find_one({"_id": "USA"})
@@ -175,10 +154,9 @@ if sample_pais:
     print(f"  Região: {sample_pais['regiao']['nome']}")
     print(f"  Emissões: {len(sample_pais['emissoes'])} registros")
     print(f"  Energia: {len(sample_pais['energia'])} registros")
-    print(f"  Indicadores Econômicos: {len(sample_pais['indicadores_economicos'])} registros")
+    print(f"  Pib: {len(sample_pais['pib'])} registros")
 else:
     print("Documento para Estados Unidos (USA) não encontrado.")
-
 
 
 # Fechar conexão com MongoDB
