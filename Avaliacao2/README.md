@@ -21,6 +21,7 @@ O **Cenário B** requer um sistema de banco de dados que suporte o armazenamento
 # Modelo Lógico (MongoDB)
 
 O modelo lógico foi projetado para aproveitar a flexibilidade do MongoDB e otimizar operações CRUD, agregando dados relacionados em documentos completos.
+![Texto alternativo](modelos/"Modelo Lógico".jpg)
 
 ## Coleções
 
