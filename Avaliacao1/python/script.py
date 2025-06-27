@@ -12,10 +12,10 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 def conectar():
     print("Conectando...")
     return psycopg2.connect(
-        dbname="db_231722",
-        user="ra231722",
-        password="phuaNgio3h",
-        host="bidu.lab.ic.unicamp.br",
+        dbname="postgres",
+        user="postgres",
+        password="myql",
+        host="localhost",
         port="5432"
     )
 
